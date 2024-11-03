@@ -1,0 +1,15 @@
+.background {
+    display:flex;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-image: url('/img/splashscreen.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0; /* Remove default body margin */
+    color: rgb(0, 0, 0); /* Default text color */
+}
+

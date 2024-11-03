@@ -28,6 +28,8 @@ obj/Debug/net8.0/staticwebassets/msbuild.build.SheridanBankingTeamProject.props
 obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.SheridanBankingTeamProject.props
 obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.SheridanBankingTeamProject.props
 obj/Debug/net8.0/staticwebassets/msbuild.SheridanBankingTeamProject.Microsoft.AspNetCore.StaticWebAssets.props
+obj/Debug/
+obj/Debug/net8.0/SheridanBankingTeamProject.AssemblyInfoInputs.cache
 obj/Debug/net8.0/SheridanBankingTeamProject.AssemblyInfo.cs
 obj/Debug/net8.0/SheridanBankingTeamProject.AssemblyInfoInputs.cache
 obj/Debug/net8.0/SheridanBankingTeamProject.AssemblyInfo.cs
