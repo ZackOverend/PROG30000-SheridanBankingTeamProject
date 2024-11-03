@@ -19,4 +19,51 @@ html {
 
 body {
   margin-bottom: 60px;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+  background-color: #BD2A22;
+  border: none;
+  font-weight: 600;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+}
+
+.btn-secondary {
+  color: black;
+  background-color: #D9D9D9;
+  border: none;
+  font-weight: 600;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.btn:hover {
+  transform: scale(1.025);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+.btn:active {
+  transform: scale(.95); 
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2); 
+  background-color: black;
+
+}
+
+@keyframes fadeInSlide {
+  0% {
+      opacity: 0;
+      filter:blur(4px)
+
+  }
+  100% {
+      opacity: 1;
+
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInSlide .5s ease-in forwards; 
 }
