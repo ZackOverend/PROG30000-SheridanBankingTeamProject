@@ -22,15 +22,14 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-.btn-primary {
+.btn-primary, .btn-primary:focus {
   background-color: #BD2A22;
   border: none;
   font-weight: 600;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
-
 }
 
-.btn-secondary {
+.btn-secondary, .btn-secondary:focus {
   color: black;
   background-color: #D9D9D9;
   border: none;
@@ -42,14 +41,16 @@ body {
   transform: scale(1.025);
   box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.25);
   color: white;
+  background-color: #262626;
 }
 
 .btn:active {
   transform: scale(.95); 
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2); 
-  background-color: black;
+  border: none;
 
 }
+
 
 @keyframes fadeInSlide {
   0% {
@@ -59,7 +60,6 @@ body {
   }
   100% {
       opacity: 1;
-
   }
 }
 
