@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SheridanBankingTeamProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed172beaff193de6f146e6b7c79fbcff14563682")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+559f862d85deb8ac4c887ceecbf8541a887b1cba")]
 [assembly: System.Reflection.AssemblyProductAttribute("SheridanBankingTeamProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SheridanBankingTeamProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
