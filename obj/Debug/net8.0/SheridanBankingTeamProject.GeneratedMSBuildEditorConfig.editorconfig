@@ -9,59 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SheridanBankingTeamProject
 build_property.RootNamespace = SheridanBankingTeamProject
-build_property.ProjectDir = /Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/
+build_property.ProjectDir = /Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject
+build_property.MSBuildProjectDirectory = /Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Home/Accounts.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Home/Accounts.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BY2NvdW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Home/Budgeting.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Home/Budgeting.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9CdWRnZXRpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Home/Goals.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Home/Goals.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Hb2Fscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Home/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Mb2dpbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Home/Preferences.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Home/Preferences.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9QcmVmZXJlbmNlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Home/Privacy.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Shared/Error.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/_ViewImports.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/_ViewStart.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Home/Index.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-jmk519q3t1
 
-[/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/Views/Shared/_Layout.cshtml]
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-gev8qtvtyn
+
+[/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3e1qyqa2my

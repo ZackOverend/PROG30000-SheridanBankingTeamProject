@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/SheridanBankingTeamProject.csproj": {}
+    "/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/SheridanBankingTeamProject.csproj": {}
   },
   "projects": {
-    "/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/SheridanBankingTeamProject.csproj": {
+    "/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/SheridanBankingTeamProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/SheridanBankingTeamProject.csproj",
+        "projectUniqueName": "/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/SheridanBankingTeamProject.csproj",
         "projectName": "SheridanBankingTeamProject",
-        "projectPath": "/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/SheridanBankingTeamProject.csproj",
-        "packagesPath": "/Users/juliusn/.nuget/packages/",
-        "outputPath": "/Users/juliusn/Desktop/Sheridan College/Year 3 Sem 1/EnterpriseSystems/PROG30000-SheridanBankingTeamProject/obj/",
+        "projectPath": "/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/SheridanBankingTeamProject.csproj",
+        "packagesPath": "/Users/frederikdahlhansen/.nuget/packages/",
+        "outputPath": "/Users/frederikdahlhansen/Documents/PROG30000 Projects/PROG30000-SheridanBankingTeamProject/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/juliusn/.nuget/NuGet/NuGet.Config"
+          "/Users/frederikdahlhansen/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
