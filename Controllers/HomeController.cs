@@ -32,6 +32,16 @@ public class HomeController : Controller
     {
         return View();
     }
+    
+    public IActionResult Goals()
+    {
+        return View();
+    }
+
+    public IActionResult Preferences()
+    {
+        return View();
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
