@@ -23,6 +23,16 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Accounts() 
+    {
+        return View();   
+    }
+
+    public IActionResult Budgeting()
+    {
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
