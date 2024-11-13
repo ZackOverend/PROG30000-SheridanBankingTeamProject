@@ -11,7 +11,7 @@ using SheridanBankingTeamProject.Data;
 namespace SheridanBankingTeamProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241113173841_InitialCreate")]
+    [Migration("20241113212218_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -26,8 +26,9 @@ namespace SheridanBankingTeamProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("AccountNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("AccountName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("Balance")
                         .HasColumnType("REAL");

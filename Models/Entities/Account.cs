@@ -8,7 +8,7 @@ namespace SheridanBankingTeamProject.Models.Entities
     public class Account
     {
         public Guid Id { get; set; }
-        public int AccountNumber { get; set; }
+        public string AccountName { get; set; }
         public double Balance {get; set;}
     }
 }

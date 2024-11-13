@@ -31,7 +31,7 @@ namespace SheridanBankingTeamProject.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    AccountNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    AccountName = table.Column<string>(type: "TEXT", nullable: false),
                     Balance = table.Column<double>(type: "REAL", nullable: false),
                     UserId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },

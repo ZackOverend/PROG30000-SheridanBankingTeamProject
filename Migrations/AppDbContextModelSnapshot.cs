@@ -23,8 +23,9 @@ namespace SheridanBankingTeamProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("AccountNumber")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("AccountName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("Balance")
                         .HasColumnType("REAL");

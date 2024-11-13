@@ -1,4 +1,5 @@
 
+@model SheridanBankingTeamProject.Models.Entities.User
 
 <div class='background container-fluid'>
     <div class="card m-5 h-50 w-50">
@@ -18,22 +19,28 @@
     </div>
 
     <div class="card m-5 h-50 w-50 ms-auto">
-        <div class="card-body">
-            <h1 class="card-title text-center mb-5">REGISTER WITH OUR BANK</h1>
-            
-            <form class="form form-control">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Full Name">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Username">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-secondary fade-in">Register</button>
-            </form>
-
-        </div>
+    <div class="card-body">
+        <h1 class="card-title text-center mb-5">REGISTER WITH OUR BANK</h1>
+        
+        <form asp-controller="Home" asp-action="RegistrationDone" method="post" class="form form-control">
+            <div class="input-group mb-3">
+                <input asp-for="Name" class="form-control" placeholder="Full Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="input-group mb-3">
+                <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="input-group mb-3">
+                <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="input-group mb-3">
+                <input asp-for="SecurityAnswer" class="form-control" placeholder="Security Answer">
+                <span asp-validation-for="SecurityAnswer" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-secondary fade-in">Register</button>
+        </form>
     </div>
+</div>
 </div>
