@@ -1,5 +1,2 @@
 bin/
 obj/
-app.sqlite
-app.sqlite-shm
-app.sqlite-wal
