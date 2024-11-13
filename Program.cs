@@ -6,11 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=app.sqlite"));
+    
 var app = builder.Build();
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=banking.sqlite"));
-    
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
