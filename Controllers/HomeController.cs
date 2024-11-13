@@ -4,6 +4,7 @@ using SheridanBankingTeamProject.Models.Entities;
 using SheridanBankingTeamProject.Models;
 using Microsoft.EntityFrameworkCore;
 using SheridanBankingTeamProject.Data;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 
@@ -23,8 +24,6 @@ public class HomeController : Controller
 
     [HttpPost]
     public async Task<IActionResult> RegistrationDone(User model){
-        
-
         model.Id = Guid.NewGuid();
         model.Accounts = new List<Account>();
 
@@ -37,16 +36,49 @@ public class HomeController : Controller
         };
 
         model.Accounts.Add(newAccount);
-
         _context.Users.Add(model);
         await _context.SaveChangesAsync();
-
+        return View();
+    }
+    
+    // This should remove each account from the db and update their amounts and push back to db
+    [HttpPost]
+    public async Task<IActionResult> TransferFunds(Account sender, Account receiver, double amount, String message){
+        if (sender.Balance < amount){
+            // Throw error if the balance is too low in the account
             
+        }
+        else{
+            // Create a transaction object
+            Transaction newTransaction = new Transaction
+                {
+                    Id = Guid.NewGuid(),
+                    Sender = sender.Id,
+                    Receiver = receiver.Id,
+                    Amount = amount,
+                    Message = message
+                };
+
+            // Update balances in each account
+            sender.Balance -= amount;
+            receiver.Balance += amount;
+
+            _context.Accounts.Update(sender);
+            _context.Accounts.Update(receiver);
+
+            _context.Transactions.Add(newTransaction);
+            
+            await _context.SaveChangesAsync();
+        }
+
+
+        
         
         
         return View();
-        
     }
+
+
 
 
     public IActionResult Index()
@@ -68,6 +100,7 @@ public class HomeController : Controller
     {
         return View();   
     }
+    
 
     public IActionResult Budgeting()
     {
