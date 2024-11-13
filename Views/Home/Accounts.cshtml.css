@@ -1,0 +1,76 @@
+.background {
+    display:flex;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: #003767;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-items: center;
+}
+
+.navbar {
+    width: 111.5%;
+    padding-right: 33rem;
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color:rgb(198, 207, 215); 
+}
+
+
+.card {
+    display: flex;
+    height: 40rem;
+    width: 30rem;
+    background-color: whitesmoke;
+    margin-left: 5rem;
+    box-shadow: 1.5rem 1rem 1rem rgba(0, 0, 0, 0.25);
+    border-radius: 1rem;
+    align-items: center;
+}
+
+.card-content {
+    align-items: center;
+    padding: 1rem;
+}
+
+.card-title {
+    font-size: 3rem;
+    padding-top: 5rem;
+    padding-right: 2rem;
+    color: #003767;
+    font-weight: 900;
+    letter-spacing: -0.05rem;
+    line-height: 3.25rem;
+    align-items: center;
+}
+
+.card-subtitle {
+
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: -.05rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-spotlight {
+    width: 5%;
+    height: 100%;
+    background-color: #D9D9D9;
+    margin-right: .75rem;
+}
+
+.btn-secondary {
+   
+    font-size: 1.5em;
+}
