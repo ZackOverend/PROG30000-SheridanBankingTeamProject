@@ -10,7 +10,8 @@ namespace SheridanBankingTeamProject.Models.Entities
         public Guid Id { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
+        public string Password { get; set; }
         public string SecurityAnswer { get; set; }
-        public List<Account> Account {get; set;}
+        public List<Account> Accounts {get; set;}
     }
 }
