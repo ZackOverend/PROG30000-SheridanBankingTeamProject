@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authorization
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,9 +22,21 @@
                         <li class="nav-item">
                             <a class="navbar-brand text-danger" asp-area="" asp-controller="Home" asp-action="Index">SHERIDAN <br> BANKING</a>
                         </li>
-                        <li class="nav-item ms-auto mt-2">
-                            <a class="nav-link text-info" asp-area="" asp-controller="Home" asp-action="Login">Sign In</a>
-                        </li>
+                        @if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item ms-auto mt-2 d-flex align-items-center">
+                                <span class="nav-link text-dark">Welcome, @User.Identity.Name!</span>
+                                <form asp-controller="Home" asp-action="Logout" method="post" class="d-inline">
+                                    <button type="submit" class="nav-link text-info">Logout</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item ms-auto mt-2">
+                                <a class="nav-link text-info" asp-area="" asp-controller="Home" asp-action="Login">Sign In</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

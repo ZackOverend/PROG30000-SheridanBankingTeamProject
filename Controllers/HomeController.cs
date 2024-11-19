@@ -5,11 +5,14 @@ using SheridanBankingTeamProject.Models;
 using Microsoft.EntityFrameworkCore;
 using SheridanBankingTeamProject.Data;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 
 
 namespace SheridanBankingTeamProject.Controllers;
-
+[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -79,16 +82,48 @@ public class HomeController : Controller
     }
 
 
-
-
+    [AllowAnonymous]
     public IActionResult Index()
     {
         return View();
     }
 
+    [AllowAnonymous]
     public IActionResult Login()
     {
         return View();
+    }
+    [HttpPost]
+    [AllowAnonymous]
+    public async Task<IActionResult> Login(string email, string password)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        
+
+        if (user != null /* && verify password */)
+        {
+            await HttpContext.SignInAsync(
+                
+                CookieAuthenticationDefaults.AuthenticationScheme,
+
+                new ClaimsPrincipal(new ClaimsIdentity(
+                    new[] { new Claim(ClaimTypes.Name, user.Name) },
+                    CookieAuthenticationDefaults.AuthenticationScheme))
+            );
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        TempData["Error"] = "Invalid login attempt";
+        return View();
+
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction(nameof(Index));
     }
 
     public IActionResult Privacy()
