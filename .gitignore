@@ -2,3 +2,4 @@ bin/
 obj/
 app.sqlite-shm
 app.sqlite-wal
+.DS_Store
