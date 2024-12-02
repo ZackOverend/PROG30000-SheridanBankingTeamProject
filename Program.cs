@@ -34,7 +34,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     }
     );
 
+builder.Logging.AddConsole();  
+
 var app = builder.Build();
+
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+logger.LogInformation("----------- Sheridan Banking Application has started -----------");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

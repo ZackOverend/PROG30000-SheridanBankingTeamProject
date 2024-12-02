@@ -24,22 +24,37 @@ public class HomeController : Controller
         _context = context;
     }
     
-
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> RegistrationDone(User model){
+        
         model.Id = Guid.NewGuid();
         model.Accounts = new List<Account>();
 
-        Account newAccount = new Account
-        {
-            
+        User newUser = new User{
             Id = Guid.NewGuid(),
-            AccountName = "Savings Account", 
-            Balance = 0.0
+            Email = model.Email,
+            Name = model.Name,
+            Password = model.Password,
+            SecurityAnswer = model.SecurityAnswer,
+            Accounts = []
         };
 
-        model.Accounts.Add(newAccount);
-        _context.Users.Add(model);
+        Account newAccount = new Account
+        {
+            Id = Guid.NewGuid(),
+            AccountName = "Savings Account", 
+            Balance = 0.0,
+            Transactions = [],
+        };
+
+        // Add Account to Account Database
+        _context.Accounts.Add(newAccount);
+        newUser.Accounts.Add(newAccount);
+
+        // Add User to User Database
+        _context.Users.Add(newUser);
+        
         await _context.SaveChangesAsync();
         return View();
     }
