@@ -13,6 +13,8 @@ namespace SheridanBankingTeamProject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             // Configure User -> Account relationship
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Accounts)
