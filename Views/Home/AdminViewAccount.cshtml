@@ -1,0 +1,42 @@
+@model IEnumerable<SheridanBankingTeamProject.Models.Entities.Account>
+
+@{
+    ViewData["Title"] = "ADMIN View Account Page";
+}
+<div class='container-fluid'>
+    <h2>Account Database</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>UserId</th>
+                <th>AccountName</th>
+                <th>Balance</th>
+                <th>Transactions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in Model)
+            {
+                <tr>
+                    <td>@account.Id</td>
+                    <td>@account.UserId</td>
+                    <td>@account.AccountName</td>
+                    <td>@account.Balance</td>
+                    <td>@account.Transactions</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+     @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            No users found in the database.
+        </div>
+    }
+
+    <button>Return</button>
+
+    
+</div>

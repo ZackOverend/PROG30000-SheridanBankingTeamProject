@@ -27,7 +27,6 @@ public class HomeController : Controller
     [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> RegistrationDone(User model){
-        
         model.Id = Guid.NewGuid();
         model.Accounts = new List<Account>();
 
@@ -87,15 +86,63 @@ public class HomeController : Controller
             _context.Transactions.Add(newTransaction);
             
             await _context.SaveChangesAsync();
-        }
+        }  
+        return View();
+    }
+    
+    [AllowAnonymous]
+    public async Task<IActionResult> Admin()
+    {
+        // Returns IEnumerable
+        var users = _context.Users.ToList();
 
+        return View(users);
+    }
 
+    [AllowAnonymous]
+    public async Task<IActionResult> AdminViewAccount(Guid id)
+    {
+        // Get user -> retrieve all accounts associated with user id
+        var userAccountsList = await _context.Accounts
+            .Where(account => account.UserId == id) // Assuming 'UserId' is the foreign key in the Accounts table
+            .ToListAsync();
         
-        
-        
+        return View(userAccountsList);
+    }
+
+    [AllowAnonymous]
+    [HttpPost]
+    public async Task<IActionResult> FindAccountByUser(Guid id){
+
+        return RedirectToAction($"AdminViewAccount", "Home");
+    }
+
+    [AllowAnonymous]
+    [HttpPost]
+    public async Task<IActionResult> FindDetailsUser(Guid id){
         return View();
     }
 
+    [AllowAnonymous]    
+    [HttpPost]
+    public async Task<IActionResult> DeleteUser(Guid id)
+    {
+        // Find the user in the database
+        var user = await _context.Users.FindAsync(id);
+
+        // Must remove all accounts first
+
+        if (user == null)
+        {
+            return NotFound(); // Handle case where user is not found
+        }
+
+        // Remove the user from the database
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Admin", "Home");
+    }
 
     [AllowAnonymous]
     public IActionResult Index()

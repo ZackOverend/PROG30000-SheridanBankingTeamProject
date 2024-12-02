@@ -19,6 +19,10 @@ namespace SheridanBankingTeamProject.Models.Entities
         // Date of creation 
         public DateTime Date { get; set; } = DateTime.Now;
 
+        // Foreign key
+        public Guid AccountId { get; set; }
+        public Account Account { get; set; }
+
 
     }
 }

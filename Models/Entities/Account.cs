@@ -11,6 +11,11 @@ namespace SheridanBankingTeamProject.Models.Entities
         public string AccountName { get; set; }
         public double Balance {get; set;}
 
+
+        // Foreign key
+        public Guid UserId { get; set; }
+        public User User { get; set; }
+        
         public List<Transaction> Transactions {get; set;}
     }
 }

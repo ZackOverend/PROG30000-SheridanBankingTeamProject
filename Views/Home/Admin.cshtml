@@ -1,0 +1,54 @@
+@model IEnumerable<SheridanBankingTeamProject.Models.Entities.User>
+
+@{
+    ViewData["Title"] = "ADMIN Page";
+}
+<div class='container-fluid'>
+    <h2>User Database</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Security Answer</th>
+                <th>Number of Accounts</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <form asp-controller="Home" asp-action="FindAccountByUser" method="post" style="display:inline;">
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.SecurityAnswer</td>
+                        <td>@(user.Accounts?.Count ?? 0)
+                                <input type="hidden" name="id" value="@user.Id" />
+                                <button type="submit" class="btn btn-info btn-sm">View Accounts</button>
+                        </td>
+                        <td>
+                                <input type="hidden" name="id" value="@user.Id" />
+                                <button type="submit" class="btn btn-info btn-sm">View Details</button>
+                        </td>
+                        <td>
+                                <input type="hidden" name="id" value="@user.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                </form>
+            }
+        </tbody>
+    </table>
+
+     @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            No users found in the database.
+        </div>
+    }
+
+    
+</div>
