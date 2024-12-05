@@ -206,7 +206,7 @@ public class HomeController : Controller
             Password = model.Password,
             SecurityAnswer = model.SecurityAnswer,
             Accounts = [],
-            Goals = ["i love myself"]
+            Goals = []
         };
 
         Account newAccount = new Account
