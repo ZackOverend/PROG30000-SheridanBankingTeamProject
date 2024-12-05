@@ -249,6 +249,37 @@ public class HomeController : Controller
         }
         return View(currentUser);
     }
+
+    /* ------------------- HELPER Etransfer  ------------------- */
+
+    [HttpPost]
+    public async Task<IActionResult> Etransfer(Account sender, double amount, String email){
+        if (sender.Balance < amount){
+            
+            
+        }
+        else{
+            
+            Transaction newTransaction = new Transaction
+                {
+                    Id = Guid.NewGuid(),
+                    Sender = sender.Id,
+                    Receiver = Guid.Empty,
+                    Amount = amount,
+                    Message = email
+                };
+
+            
+            sender.Balance -= amount;
+            
+            _context.Accounts.Update(sender);
+
+            _context.Transactions.Add(newTransaction);
+            
+            await _context.SaveChangesAsync();
+        }  
+        return View();
+    }
     
     /* ------------------- VIEW Goals.cshtml  ------------------- */
     public IActionResult Goals()
