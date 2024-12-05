@@ -217,7 +217,7 @@ public class HomeController : Controller
     }
     
     /* ------------------- VIEW Budgeting.cshtml  ------------------- */
-    public IActionResult Budgeting()
+    public IActionResult Transfers()
     {
         return View();
     }
