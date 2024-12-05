@@ -18,10 +18,32 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly AppDbContext _context;
 
+    //private User _currentUser = new User{
+    //        Id = Guid.NewGuid(),
+    //        Email = "",
+    //        Name = "",
+    //        Password = "",
+    //        SecurityAnswer = "",
+    //        Accounts = []
+    //};
+
+    private User _currentUser { get; set; }
+
+    
+
     public HomeController(ILogger<HomeController> logger, AppDbContext context)
     {
         _logger = logger;
         _context = context;
+
+        _currentUser = new User{
+                Id = Guid.NewGuid(),
+                Email = "",
+                Name = "",
+                Password = "",
+                SecurityAnswer = "",
+                Accounts = []
+            };
     }
     
 
@@ -149,13 +171,14 @@ public class HomeController : Controller
 
                 new ClaimsPrincipal(new ClaimsIdentity(
                     new[] { 
-                        new Claim(ClaimTypes.Name, user.Name),
-                        new Claim(ClaimTypes.Email, user.Email),
-
+                        new Claim(ClaimTypes.Name, user.Name)
                      },
                     CookieAuthenticationDefaults.AuthenticationScheme))
-                    
+
             );
+
+            _currentUser.Name = user.Name;
+            _currentUser.Email = user.Email;
 
             return RedirectToAction(nameof(Index));
         }
@@ -164,6 +187,7 @@ public class HomeController : Controller
         return View();
 
     }
+    
 
         /* ------------------- HELPER for Login.cshtml  ------------------- */
     [AllowAnonymous]
@@ -224,7 +248,7 @@ public class HomeController : Controller
     /* ------------------- VIEW Transfers.cshtml  ------------------- */
     public IActionResult Transfers()
     {
-        return View();
+        return View(_currentUser);
     }
     
     /* ------------------- VIEW Goals.cshtml  ------------------- */
