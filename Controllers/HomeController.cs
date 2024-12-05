@@ -75,6 +75,16 @@ public class HomeController : Controller
         return View();
     }
     
+    /* ------------------- VIEW Accounts.cshtml  ------------------- */
+    public async Task<IActionResult> Accounts()
+    {
+        var currentUser = await GetCurrentUser();
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login");
+        }
+        return View(currentUser);
+    }
 
     /* ------------------- VIEW Admin.cshtml  ------------------- */
     [AllowAnonymous]
@@ -233,11 +243,6 @@ public class HomeController : Controller
         return View();
     }
 
-    /* ------------------- VIEW Accounts.cshtml  ------------------- */
-    public IActionResult Accounts() 
-    {
-        return View();   
-    }
     
     /* ------------------- VIEW Transfers.cshtml  ------------------- */
     public async Task<IActionResult> Transfers()

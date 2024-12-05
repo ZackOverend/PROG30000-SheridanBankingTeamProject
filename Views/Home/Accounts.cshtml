@@ -1,89 +1,52 @@
+@model SheridanBankingTeamProject.Models.Entities.User
+
 @{
-    ViewData["Title"] = "Accounts";
+    ViewData["Title"] = $"{Model.Name}'s Accounts";
 }
 
-
-   <nav class="navbar navbar-expand-sm navbar-light bg-secondary bg-opacity-100 border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <div class="navbar navbar-expand-sm w-100">
-                    <ul class="navbar-nav w-100 justify-content-between mx-5">
-                        <li class="nav-item">
-                            <h1>SUMMARY</h1>
-                        </li>
-                        <li class="nav-item">
-                            <h1>ACTIVITY</h1>
-                        </li>
-                    </ul>
-                </div>
+<nav class="navbar navbar-expand-sm navbar-light bg-secondary bg-opacity-100 border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <div class="navbar navbar-expand-sm w-100">
+                <ul class="navbar-nav w-100 justify-content-between mx-5">
+                    <li class="nav-item">
+                        <h1>SUMMARY</h1>
+                    </li>
+                    <li class="nav-item">
+                        <h1>ACTIVITY</h1>
+                    </li>
+                </ul>
             </div>
-    </nav> 
+        </div>
+</nav> 
 
 <div class='background container-fluid'>
-    <div>
-    
-    
     <div class="d-flex justify-content-around w-100 px-5">
-     
-        <div class="card account-card">
-            <h2>CHECKING ACCOUNT</h2>
-             <h4>ID Placeholder</h4>
+        @foreach (var account in Model.Accounts)
+        {
+            <div class="card account-card">
+                <h2>CHECKING ACCOUNT</h2>
+                <h4>ID Placeholder</h4>
 
 
-            <div class="card-subtitle">
-                <p>$123,123</p>
+                <div class="card-subtitle">
+                    <p>$123,123</p>
+                </div>
+
+                <p>Recent Transactions</p>
+
+                <div class="card-subtitle">
+
+                    <ul>
+                    <li>$200.00</li>
+                    <li>$5000.00</li>
+                    <li>$250.00</li>
+                    <li>$732.23</li>
+                    </ul>
+                </div>
+
+                <button class="btn btn-secondary transfer-btn">Transfer Funds</button>
             </div>
-
-    
-            <p>Recent Transactions</p>
-            
-
-            <div class="card-subtitle">
-
-                <ul>
-                <li>$200.00</li>
-                <li>$5000.00</li>
-                <li>$250.00</li>
-                <li>$732.23</li>
-                </ul>
-            </div>
-
-            <button class="btn btn-secondary transfer-btn">Transfer Funds</button>
-        </div>
-
-      
-        <div class="card account-card">
-            <h2>SAVINGS ACCOUNT</h2>
-            <h4>ID Placeholder</h4>
-
-            <div class="card-subtitle">
-                <p class="balance">$123,123</p>
-            </div>
-
-            <p>Recent Transactions</p>
-
-            <div class="card-subtitle">
-
-                <ul>
-                <li>$200.00</li>
-                <li>$5000.00</li>
-                <li>$250.00</li>
-                <li>$732.23</li>
-                </ul>
-            </div>
-
-
-
-            
-          
-            <button class="btn btn-secondary transfer-btn">Transfer Funds</button>
-        </div>
+        }
 
     </div>
-
-
-    </div>
-
-    </div>
-
-    
 </div>
