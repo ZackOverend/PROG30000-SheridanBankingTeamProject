@@ -24,8 +24,9 @@
         @foreach (var account in Model.Accounts)
         {
             <div class="card account-card">
+                
+                
                 <h2>@account.AccountName</h2>
-                <h6 style="font-style: italic;">@account.Id</h6>
 
                 <div class="card-subtitle">
                         <p>$@account.Balance</p>
@@ -36,7 +37,6 @@
                 <a asp-controller="Home" asp-action="Transfers" asp-route-id="@account.Id" style="text-decoration: none; color: inherit;">
                     <div class="card-transactions">
                         <ul>
-                            @if (account.Transactions != null)     
                             @foreach(var transaction in account.Transactions.OrderByDescending(t => t.Date).Take(5))
                             {
                                 @if(transaction.Amount > 0)
@@ -53,7 +53,11 @@
 
                                 }
                             }
-                            
+
+                            @if(!account.Transactions.Any()){
+                                <h6>No Transactions</h6>
+                            }
+                                
                         </ul>
                     </div>
                 </a>
@@ -66,6 +70,11 @@
                     <button type="submit" class="btn btn-secondary transfer-btn">Remove $100</button>
                 </form>
 
+                <form asp-controller="Home" asp-action="DeleteAccount" asp-route-accountId="@account.Id" method="post" class="mb-3">
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        Delete Account
+                    </button>
+                </form>
 
                 
 
@@ -73,17 +82,21 @@
             
         }
         
-    
-        <div class="card account-card">
-            <form asp-controller="Home" asp-action="AddNewAccount" asp-route-userId="@Model.Id" method="post" class="mb-3">
 
-                <input name="accountName" class="form-control" placeholder="Full Name">
+        @if(Model.Accounts.Count < 3)
+        {
+            <div class="card account-card">
+                <form asp-controller="Home" asp-action="AddNewAccount" method="post" class="mb-3">
 
-                <input name="initalBalance" class="form-control" placeholder="Initial Balance">
+                    <input name="accountName" class="form-control" placeholder="Full Name">
 
-                <button type="submit" class="btn btn-secondary transfer-btn">Open Another Account</button>
-            </form>
-        </div>
+                    <input name="initialBalance" class="form-control" placeholder="Initial Balance">
+
+                    <button type="submit" class="btn btn-secondary transfer-btn">Open an Account</button>
+                </form>
+            </div>     
+        }
+        
         
         
 

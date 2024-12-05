@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using System.Diagnostics.Metrics;
 
 
 namespace SheridanBankingTeamProject.Controllers;
@@ -171,6 +172,41 @@ public class HomeController : Controller
     TempData["Success"] = "$100 has been removed from your account";
         return RedirectToAction("Accounts");
     }
+
+    [HttpPost]
+public async Task<IActionResult> DeleteAccount(Guid accountId)
+{
+    var currentUser = await GetCurrentUser();
+    if (currentUser == null)
+    {
+        return RedirectToAction("Login");
+    }
+
+    // Find the account
+    var accountToDelete = await _context.Accounts
+        .Include(a => a.Transactions)
+        .FirstOrDefaultAsync(a => a.Id == accountId && a.UserId == currentUser.Id);
+
+    if (accountToDelete == null)
+    {
+        TempData["Error"] = "Account not found or access denied";
+        return RedirectToAction("Accounts");
+    }
+
+    // Remove related transactions first
+    if (accountToDelete.Transactions != null)
+    {
+        _context.Transactions.RemoveRange(accountToDelete.Transactions);
+    }
+
+    // Remove the account
+    _context.Accounts.Remove(accountToDelete);
+    
+    await _context.SaveChangesAsync();
+
+    TempData["Success"] = "Account successfully deleted";
+    return RedirectToAction("Accounts");
+}
 
     /* ------------------- HELPER Accounts.cshtml  ------------------- */
     [HttpPost]
