@@ -28,7 +28,6 @@
 
 .card {
     display: flex;
-    height: 40rem;
     width: 30rem;
     background-color: whitesmoke;
     margin-left: 5rem;
@@ -66,12 +65,41 @@
     align-items: center;
 }
 
+.card-transactions {
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: -.05rem;
+    display: flex;
+
+    align-content: center;
+    background-color: #bdbdbd56;
+    width: 10em;
+    border-radius: 0.25rem;
+
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-transactions:hover {
+    transform: scale(1.025);
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.25);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+
+}
+
+.card-transactions:active {
+    transform: scale(.95); 
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2); 
+    border: none;
+}
+
 .card-spotlight {
     width: 5%;
     height: 100%;
     background-color: #D9D9D9;
     margin-right: .75rem;
 }
+
 
 .btn-secondary {
    

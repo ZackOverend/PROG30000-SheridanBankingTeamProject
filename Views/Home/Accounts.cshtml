@@ -1,5 +1,4 @@
 @model SheridanBankingTeamProject.Models.Entities.User
-
 @{
     ViewData["Title"] = $"{Model.Name}'s Accounts";
 }
@@ -19,34 +18,74 @@
         </div>
 </nav> 
 
+
 <div class='background container-fluid'>
     <div class="d-flex justify-content-around w-100 px-5">
         @foreach (var account in Model.Accounts)
         {
             <div class="card account-card">
-                <h2>CHECKING ACCOUNT</h2>
-                <h4>ID Placeholder</h4>
-
-
-                <div class="card-subtitle">
-                    <p>$123,123</p>
-                </div>
-
-                <p>Recent Transactions</p>
+                <h2>@account.AccountName</h2>
+                <h6 style="font-style: italic;">@account.Id</h6>
 
                 <div class="card-subtitle">
-
-                    <ul>
-                    <li>$200.00</li>
-                    <li>$5000.00</li>
-                    <li>$250.00</li>
-                    <li>$732.23</li>
-                    </ul>
+                        <p>$@account.Balance</p>
                 </div>
+                
+                <h5>Recent Transactions</h5>
 
-                <button class="btn btn-secondary transfer-btn">Transfer Funds</button>
+                <a asp-controller="Home" asp-action="Transfers" asp-route-id="@account.Id" style="text-decoration: none; color: inherit;">
+                    <div class="card-transactions">
+                        <ul>
+                            @if (account.Transactions != null)     
+                            @foreach(var transaction in account.Transactions.OrderByDescending(t => t.Date).Take(5))
+                            {
+                                @if(transaction.Amount > 0)
+                                {
+                                    <li style="color: #7bbc8f;">$@transaction.Amount</li>
+
+                                }
+                                else if(transaction.Amount < 0)
+                                {
+                                    <li style="color: #ce3030;">$@transaction.Amount</li>
+                                }
+                                else{
+                                    <li style="color: #b0b0b0;">$@transaction.Amount</li>
+
+                                }
+                            }
+                            
+                        </ul>
+                    </div>
+                </a>
+
+
+                <form asp-controller="Home" asp-action="AddMoney" asp-route-accountId="@account.Id" method="post" class="my-3 mb-3">
+                    <button type="submit" class="btn btn-secondary transfer-btn">Add $100</button>
+                </form>
+                <form asp-controller="Home" asp-action="RemoveMoney" asp-route-accountId="@account.Id" method="post" class="mb-3">
+                    <button type="submit" class="btn btn-secondary transfer-btn">Remove $100</button>
+                </form>
+
+
+                
+
             </div>
+            
         }
+        
+    
+        <div class="card account-card">
+            <form asp-controller="Home" asp-action="AddNewAccount" asp-route-userId="@Model.Id" method="post" class="mb-3">
+
+                <input name="accountName" class="form-control" placeholder="Full Name">
+
+                <input name="initalBalance" class="form-control" placeholder="Initial Balance">
+
+                <button type="submit" class="btn btn-secondary transfer-btn">Open Another Account</button>
+            </form>
+        </div>
+        
+        
 
     </div>
 </div>

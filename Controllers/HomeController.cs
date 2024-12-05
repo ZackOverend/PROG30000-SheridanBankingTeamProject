@@ -38,6 +38,7 @@ public class HomeController : Controller
         // Get the actual user from your database
         var user = await _context.Users
             .Include(u => u.Accounts)
+            .ThenInclude(a => a.Transactions)
             .FirstOrDefaultAsync(u => u.Email == userEmail);
             
         return user;
@@ -84,6 +85,121 @@ public class HomeController : Controller
             return RedirectToAction("Login");
         }
         return View(currentUser);
+    }
+
+    /* ------------------- HELPER Accounts.cshtml  ------------------- */
+    // Adds $100 dollars to the account 
+    [HttpPost]
+    public async Task<IActionResult> AddMoney(Guid accountId)
+    {
+        // Get the account
+        var account = await _context.Accounts
+            .FirstOrDefaultAsync(a => a.Id == accountId);
+
+        if (account == null)
+        {
+            TempData["Error"] = "Account not found";
+            return RedirectToAction("Accounts");
+        }
+
+        // Add the transaction
+        var transaction = new Transaction
+        {
+            AccountId = accountId,
+            Amount = 100,
+            Date = DateTime.Now,
+            Message = "Added $100",
+            Receiver = accountId
+        };
+
+        // Update account balance
+        account.Balance += 100;
+
+        // Update the account transactions list
+        // account.Transactions.Add(transaction);
+
+        // Save changes
+        _context.Transactions.Add(transaction);
+        await _context.SaveChangesAsync();
+
+        TempData["Success"] = "$100 has been added to your account";
+        return RedirectToAction("Accounts");
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> RemoveMoney(Guid accountId)
+{
+
+    // Verify the account belongs to the current user
+    var account = await _context.Accounts
+        .FirstOrDefaultAsync(a => a.Id == accountId);
+
+    if (account == null)
+    {
+        TempData["Error"] = "Account not found or access denied";
+        return RedirectToAction("Accounts");
+    }
+
+    // Check if there's enough balance
+    if (account.Balance < 100)
+    {
+        TempData["Error"] = "Insufficient funds";
+        return RedirectToAction("Accounts");
+    }
+
+    // Add the transaction
+    var transaction = new Transaction
+    {
+        AccountId = accountId,
+        Amount = -100, // Negative amount for withdrawal
+        Date = DateTime.Now,
+        Message = "Removed $100",
+        Receiver = accountId
+    };
+
+    // Update account balance
+    account.Balance -= 100;
+
+     // Update the account transactions list
+    // account.Transactions.Add(transaction);
+
+    // Save changes
+    _context.Transactions.Add(transaction);
+    
+    await _context.SaveChangesAsync();
+
+    TempData["Success"] = "$100 has been removed from your account";
+        return RedirectToAction("Accounts");
+    }
+
+    /* ------------------- HELPER Accounts.cshtml  ------------------- */
+    [HttpPost]
+    public async Task<IActionResult> AddNewAccount(string accountName, double initialBalance)
+    {
+        var currentUser = await GetCurrentUser();
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login");
+        }
+
+        // Generate new account
+        Account newAccount = new Account
+        {
+            Id = Guid.NewGuid(),
+            AccountName = accountName,
+            Balance = initialBalance,
+            Transactions =[],
+
+            UserId = currentUser.Id,
+            User = currentUser
+        };
+
+        currentUser.Accounts.Add(newAccount);
+        _context.Accounts.Add(newAccount);
+
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Accounts");
     }
 
     /* ------------------- VIEW Admin.cshtml  ------------------- */
