@@ -3,22 +3,6 @@
     ViewData["Title"] = $"{Model.Name}'s Accounts";
 }
 
-<nav class="navbar navbar-expand-sm navbar-light bg-secondary bg-opacity-100 border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <div class="navbar navbar-expand-sm w-100">
-                <ul class="navbar-nav w-100 justify-content-between mx-5">
-                    <li class="nav-item">
-                        <h1>SUMMARY</h1>
-                    </li>
-                    <li class="nav-item">
-                        <h1>ACTIVITY</h1>
-                    </li>
-                </ul>
-            </div>
-        </div>
-</nav> 
-
-
 <div class='background container-fluid'>
     <div class="d-flex justify-content-around w-100 px-5">
         @foreach (var account in Model.Accounts)
@@ -36,7 +20,7 @@
 
                 <a asp-controller="Home" asp-action="Transfers" asp-route-id="@account.Id" style="text-decoration: none; color: inherit;">
                     <div class="card-transactions">
-                        <ul>
+                        <ul class="list-transactions">
                             @foreach(var transaction in account.Transactions.OrderByDescending(t => t.Date).Take(5))
                             {
                                 @if(transaction.Amount > 0)
@@ -85,14 +69,14 @@
 
         @if(Model.Accounts.Count < 3)
         {
-            <div class="card account-card">
+            <div class="card card-new-account">
                 <form asp-controller="Home" asp-action="AddNewAccount" method="post" class="mb-3">
 
-                    <input name="accountName" class="form-control" placeholder="Full Name">
+                    <input class="my-3" name="accountName" class="form-control" placeholder="Full Name">
 
-                    <input name="initialBalance" class="form-control" placeholder="Initial Balance">
+                    <input class="my-3" name="initialBalance" class="form-control" placeholder="Initial Balance">
 
-                    <button type="submit" class="btn btn-secondary transfer-btn">Open an Account</button>
+                    <button type="submit" class="btn btn-secondary" style="font-size: medium;">Open an Account</button>
                 </form>
             </div>     
         }
