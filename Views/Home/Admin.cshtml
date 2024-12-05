@@ -12,6 +12,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Security Answer</th>
+                <th>Goals</th>
                 <th>Number of Accounts</th>
                 <th>Actions</th>
             </tr>
@@ -25,6 +26,12 @@
                         <td>@user.Name</td>
                         <td>@user.Email</td>
                         <td>@user.SecurityAnswer</td>
+
+                        @foreach (var goal in @user.Goals) {
+                            <td>@goal</td>
+                        }
+                        
+                        
                         <td>@(user.Accounts?.Count ?? 0)
                                 <input type="hidden" name="id" value="@user.Id" />
                                 <button type="submit" class="btn btn-info btn-sm">View Accounts</button>

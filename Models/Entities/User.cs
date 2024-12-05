@@ -13,5 +13,7 @@ namespace SheridanBankingTeamProject.Models.Entities
         public string Password { get; set; }
         public string SecurityAnswer { get; set; }
         public List<Account> Accounts {get; set;}
+
+        public List<string> Goals {get; set; }
     }
 }

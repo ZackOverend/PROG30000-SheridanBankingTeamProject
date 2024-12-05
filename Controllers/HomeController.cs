@@ -172,7 +172,8 @@ public class HomeController : Controller
             Name = model.Name,
             Password = model.Password,
             SecurityAnswer = model.SecurityAnswer,
-            Accounts = []
+            Accounts = [],
+            Goals = ["i love myself"]
         };
 
         Account newAccount = new Account
@@ -225,7 +226,57 @@ public class HomeController : Controller
     /* ------------------- VIEW Goals.cshtml  ------------------- */
     public IActionResult Goals()
     {
-        return View();
+
+        var usersWithGoals = _context.Users
+            .ToList();
+
+    return View(usersWithGoals);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddGoal(Guid userId, string newGoal)
+    {
+        var user = await _context.Users.FindAsync(userId);
+
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+
+        if (user.Goals == null)
+        {
+            user.Goals = new List<string>();
+        }
+
+        user.Goals.Add(newGoal);
+
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Goals");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteGoal(Guid userId, string goal)
+    {
+        var user = await _context.Users.FindAsync(userId);
+
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+
+        if (user.Goals == null || !user.Goals.Contains(goal))
+        {
+            return NotFound("Goal not found");
+        }
+
+        user.Goals.Remove(goal); 
+
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Goals");
     }
 
     /* ------------------- VIEW Preferences.cshtml  ------------------- */
