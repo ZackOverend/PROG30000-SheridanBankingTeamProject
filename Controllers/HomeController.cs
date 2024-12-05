@@ -148,8 +148,13 @@ public class HomeController : Controller
                 CookieAuthenticationDefaults.AuthenticationScheme,
 
                 new ClaimsPrincipal(new ClaimsIdentity(
-                    new[] { new Claim(ClaimTypes.Name, user.Name) },
+                    new[] { 
+                        new Claim(ClaimTypes.Name, user.Name),
+                        new Claim(ClaimTypes.Email, user.Email),
+
+                     },
                     CookieAuthenticationDefaults.AuthenticationScheme))
+                    
             );
 
             return RedirectToAction(nameof(Index));
@@ -216,7 +221,7 @@ public class HomeController : Controller
         return View();   
     }
     
-    /* ------------------- VIEW Budgeting.cshtml  ------------------- */
+    /* ------------------- VIEW Transfers.cshtml  ------------------- */
     public IActionResult Transfers()
     {
         return View();

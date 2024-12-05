@@ -1,12 +1,45 @@
+@using System.Security.Claims
+@model IEnumerable<SheridanBankingTeamProject.Models.Entities.User>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budgeting</title>
-</head>
-<body>
-    
-</body>
-</html>
+
+
+<div class='background container-fluid'>
+    <div class="card m-5 h-50 w-50">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-5">E-TRANSFER</h5>
+            <form class="form form-control">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Account Number For Recipient">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Full Name For Recipient">
+                </div>
+                <div class="input-group mb-3">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>@User.Identity.Name</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="New Password">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Retype New Password">
+                </div>
+                
+                <button type="submit" class="btn btn-secondary fade-in">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="card m-5 h-50 w-50 ms-auto">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-5">TRANSACTIONS</h5>
+
+        </div>
+    </div>
+</div>
+
