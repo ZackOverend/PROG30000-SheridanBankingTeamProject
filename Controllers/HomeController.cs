@@ -18,12 +18,30 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly AppDbContext _context;
 
+    
+
     public HomeController(ILogger<HomeController> logger, AppDbContext context)
     {
         _logger = logger;
         _context = context;
+
     }
     
+
+    // Helper method to get current user
+    private async Task<User> GetCurrentUser()
+    {
+        if (!User.Identity.IsAuthenticated)
+            return null;
+
+        var userEmail = User.FindFirstValue(ClaimTypes.Email);
+        // Get the actual user from your database
+        var user = await _context.Users
+            .Include(u => u.Accounts)
+            .FirstOrDefaultAsync(u => u.Email == userEmail);
+            
+        return user;
+    }
 
     // This should remove each account from the db and update their amounts and push back to db
     [HttpPost]
@@ -57,6 +75,16 @@ public class HomeController : Controller
         return View();
     }
     
+    /* ------------------- VIEW Accounts.cshtml  ------------------- */
+    public async Task<IActionResult> Accounts()
+    {
+        var currentUser = await GetCurrentUser();
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login");
+        }
+        return View(currentUser);
+    }
 
     /* ------------------- VIEW Admin.cshtml  ------------------- */
     [AllowAnonymous]
@@ -134,33 +162,38 @@ public class HomeController : Controller
     }
 
     /* ------------------- HELPER for Login.cshtml  ------------------- */
-    [HttpPost]
     [AllowAnonymous]
+    [HttpPost]
     public async Task<IActionResult> Login(string email, string password)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-        
+        var user = await _context.Users
+            .Include(u => u.Accounts)
+            .FirstOrDefaultAsync(u => u.Email == email);
 
         if (user != null /* && verify password */)
         {
-            await HttpContext.SignInAsync(
-                
-                CookieAuthenticationDefaults.AuthenticationScheme,
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+            };
 
-                new ClaimsPrincipal(new ClaimsIdentity(
-                    new[] { new Claim(ClaimTypes.Name, user.Name) },
-                    CookieAuthenticationDefaults.AuthenticationScheme))
-            );
+            var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var principal = new ClaimsPrincipal(identity);
+
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme, 
+                principal);
 
             return RedirectToAction(nameof(Index));
         }
 
         TempData["Error"] = "Invalid login attempt";
         return View();
-
     }
-
-        /* ------------------- HELPER for Login.cshtml  ------------------- */
+    
+    /* ------------------- HELPER for Login.cshtml  ------------------- */
     [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> RegistrationDone(User model){
@@ -211,15 +244,46 @@ public class HomeController : Controller
         return View();
     }
 
-    /* ------------------- VIEW Accounts.cshtml  ------------------- */
-    public IActionResult Accounts() 
-    {
-        return View();   
-    }
     
-    /* ------------------- VIEW Budgeting.cshtml  ------------------- */
-    public IActionResult Budgeting()
+    /* ------------------- VIEW Transfers.cshtml  ------------------- */
+    public async Task<IActionResult> Transfers()
     {
+        var currentUser = await GetCurrentUser();
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login");
+        }
+        return View(currentUser);
+    }
+
+    /* ------------------- HELPER Etransfer  ------------------- */
+
+    [HttpPost]
+    public async Task<IActionResult> Etransfer(Account sender, double amount, String email){
+        if (sender.Balance < amount){
+            
+            
+        }
+        else{
+            
+            Transaction newTransaction = new Transaction
+                {
+                    Id = Guid.NewGuid(),
+                    Sender = sender.Id,
+                    Receiver = Guid.Empty,
+                    Amount = amount,
+                    Message = email
+                };
+
+            
+            sender.Balance -= amount;
+            
+            _context.Accounts.Update(sender);
+
+            _context.Transactions.Add(newTransaction);
+            
+            await _context.SaveChangesAsync();
+        }  
         return View();
     }
     

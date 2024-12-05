@@ -1,0 +1,42 @@
+@using System.Security.Claims
+@model SheridanBankingTeamProject.Models.Entities.User
+@{
+    ViewData["Title"] = "Transfers";
+}
+
+
+
+<div class='background container-fluid'>
+    <div class="card m-5 h-50 w-50">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-5">E-TRANSFER</h5>
+            <form class="form form-control">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Email For Recipient">
+                </div>
+                <div class="input-group mb-3">
+                    <select class="form-select" aria-label="Default select example">
+                        @foreach (var account in Model.Accounts)
+                        {
+                            <option value="@account.Id">@account.AccountName - $@account.Balance</option>
+                        }
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" placeholder="Amount">
+                </div>
+                
+                <button type="submit" class="btn btn-secondary fade-in">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="card m-5 h-50 w-50 ms-auto">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-5">TRANSACTIONS</h5>
+
+        </div>
+    </div>
+</div>
+
