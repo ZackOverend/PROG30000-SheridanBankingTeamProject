@@ -288,13 +288,16 @@ public class HomeController : Controller
     }
     
     /* ------------------- VIEW Goals.cshtml  ------------------- */
-    public IActionResult Goals()
+    public async Task<IActionResult> Goals()
     {
+        
+        var currentUser = await GetCurrentUser(); // Get the currently logged-in user
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login");
+        }
 
-        var usersWithGoals = _context.Users
-            .ToList();
-
-    return View(usersWithGoals);
+        return View(currentUser);
     }
 
     [HttpPost]
