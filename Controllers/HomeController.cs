@@ -390,12 +390,6 @@ public async Task<IActionResult> DeleteAccount(Guid accountId)
         return RedirectToAction(nameof(Index));
     }
 
-    /* ------------------- VIEW Privacy.cshtml  ------------------- */
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
     
     /* ------------------- VIEW Transfers.cshtml  ------------------- */
     public async Task<IActionResult> Transfers()
@@ -502,6 +496,42 @@ public async Task<IActionResult> DeleteAccount(Guid accountId)
     public IActionResult Preferences()
     {
         return View();
+    }
+
+   /* ------------------- HELPER Preferences.cshtml  ------------------- */
+    [HttpPost]
+    public async Task<IActionResult> ChangePassword(string CurrentPassword, string SecurityAnswer, string NewPassword, string PasswordReentry)
+    {
+        var currentUser = await GetCurrentUser();
+        if (currentUser == null)
+        {
+            return RedirectToAction("Login");
+        }
+
+        if (currentUser.Password != CurrentPassword)
+        {
+            TempData["Error"] = "Current password is incorrect";
+            return RedirectToAction("Preferences");
+        }
+
+        if (currentUser.SecurityAnswer != SecurityAnswer)
+        {
+            TempData["Error"] = "Security answer is incorrect";
+            return RedirectToAction("Preferences");
+        }
+
+        if (NewPassword != PasswordReentry)
+        {
+            TempData["Error"] = "Passwords do not match";
+            return RedirectToAction("Preferences");
+        }
+
+        currentUser.Password = NewPassword;
+        _context.Users.Update(currentUser);
+        await _context.SaveChangesAsync();
+
+        TempData["Success"] = "Password has been changed";
+        return RedirectToAction("Preferences");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,25 +1,25 @@
 
 
-<div class='background container-fluid'>
-
+<div class='background container-fluid d-flex justify-content-center align-items-center'>
     <div class="card m-5 h-50 w-50">
         <div class="card-body">
             <h5 class="card-title text-center mb-5">CHANGE PASSWORD</h5>
-            <form class="form form-control">
+            <form asp-controller="Home" asp-action="ChangePassword" class="form form-control" method="post">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Account Number">
+                    <input type="password" class="form-control" placeholder="Current Password" name="CurrentPassword">
+                </div>
+                <div class="input-group">
+                    <p class="form-control"> What city were you born in</p>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Full Name">
+                    <input type="text" class="form-control" placeholder="Security Answer" name="SecurityAnswer">
+                </div>
+                
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="New Password" name="NewPassword">
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Current Password">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="New Password">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Retype New Password">
+                    <input type="password" class="form-control" placeholder="Retype New Password" name="PasswordReentry">
                 </div>
                 
                 <button type="submit" class="btn btn-secondary fade-in">Change Password</button>
@@ -27,33 +27,5 @@
 
         </div>
     </div>
-
-    <div class="card m-5 h-50 w-50 ms-auto">
-        <div class="card-body">
-            <h5 class="card-title text-center mb-5">REQUEST ACCOUNT CHANGES</h5>
-
-
-            
-            <form class="form form-control">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Account Number">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Full Name">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password">
-                </div>
-                <div class="input-group mb-3">
-                    <textarea type="text" class="form-control" rows="20" placeholder="Request"></textarea>
-                </div>
-                <button type="submit" class="btn btn-secondary fade-in" >Submit Request</button>
-
-
-
-            </form>
-
-        </div>
-    </div>
-</div>ˇ
+</div>
 
